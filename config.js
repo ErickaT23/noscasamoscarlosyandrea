@@ -9,44 +9,26 @@ export const eventData = {
       file: "/Fonseca - Que Suerte Tenerte - Letra (1) (online-audio-converter.com).mp3"
     },
     ceremony: {
-      ceremonyImage:"/images/ceremonia.png",
-      place: "Hotel Emporio Cancún",
-      address: "¡Un sí con los pies en la arena!",
-      date: "26 de Febrero",
-      time: "16:30 hrs",
-      mapLink: "https://maps.app.goo.gl/EuDBJDjDVKTorNGE6"
+      image: "/images/iglesia.png",
+      place: "Santa María Magdalena",
+      address: "Patulul, Suchitepéquez",
+      date: "13 de Diciembre",
+      time: "18:30 hrs",
+      mapLink: "https://maps.app.goo.gl/VVxCkyjyDCeLCg4z7"
     },
     reception: {
-      receptionImage:"/images/recepcion.png",
-      place: "Hotel Emporio Cancún",
-      address: "¡La fiesta sigue en la terraza principal!",
-      date: "26 de Febrero",
-      time: "17:30 hrs",
-      mapLink: "https://maps.app.goo.gl/EuDBJDjDVKTorNGE6"
+      image: "/images/recepcion.png",
+      place: "Salón Municiapl de Patulul",
+      address: "Patulul, Suchitepéquez",
+      date: "13 de Diciembre",
+      time: "19:30 hrs",
+      mapLink: "https://maps.app.goo.gl/4n7564x5MMRzhbXJ6?g_st=aw"
     },
-    banks: [
-      {
-        bank: "Cuenta B&F",
-        accountNumber: "40-3033071-0",
-        accountType: "Cuenta de Ahorros",
-      },
-    ],
-    abroadGiftMessage: "Pero si deseas sumar un detalle especial, aquí están nuestros datos.",
-    giftImage: "/images/gift.png",
-    
-    dresscode: {
-      description: "Para ayudarte a elegir tu atuendo, hemos preparado algunas ideas que pueden inspirarte. El blanco y el ivory están reservados para la novia.",
-      image: "/images/dresscode.png",
-      inspiration: {
-        women: "https://es.pinterest.com/search/pins/?q=boda%20en%20la%20playa%20vestimenta%20invitados%20mujeres&rs=typed",
-        men: "https://es.pinterest.com/search/pins/?q=boda%20en%20la%20playa%20vestimenta%20invitados%20hombres&rs=typed"
-      }
-    },  
+    abroadGiftMessage: "Gracias por ser parte de este momento si deseas agradarnos con un obsequio puede ser una aportación monetaría, o algo que nos ayude a construir nuestro hogar.",
 
-    finalPhoto: "/images/pareja-final.png",
+    finalPhoto: "/images/S1.png",
     finalMessage: "Esperamos con ilusión poder celebrar juntos este momento tan especial",
     rsvp: {
-      rsvpImage: "/images/rsvp.png",
       form: "https://docs.google.com/forms/d/e/1FAIpQLSdAcHTQU0WBzqMlkJ4tIUVqY60DOG9GiDr0mCbFcBDhxmjITw/viewform?usp=header",
     },
     footer: {

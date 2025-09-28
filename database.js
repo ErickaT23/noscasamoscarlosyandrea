@@ -4,12 +4,12 @@ import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebas
 
 // Configuración
 const firebaseConfig = {
-  apiKey: "AIzaSyCFPVvr2_8zMxIlkyP3scvY8s1IySd9kJQ",
-  authDomain: "brendayfrancisco-1cc62.firebaseapp.com",
-  projectId: "brendayfrancisco-1cc62",
-  storageBucket: "brendayfrancisco-1cc62.firebasestorage.app",
-  messagingSenderId: "493107736720",
-  appId: "1:493107736720:web:a18693cb029e205aa0a815"
+  apiKey: "AIzaSyC0wjJfFIhHER-h7ixlqQEldOc3QWycUFk",
+  authDomain: "noscasamoscarlosyandrea.firebaseapp.com",
+  projectId: "noscasamoscarlosyandrea",
+  storageBucket: "noscasamoscarlosyandrea.firebasestorage.app",
+  messagingSenderId: "346139642681",
+  appId: "1:346139642681:web:888d96b329f85a1083f6e8"
 };
 
 // Inicializar Firebase

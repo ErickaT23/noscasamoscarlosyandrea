@@ -21,7 +21,8 @@
     /* Otros */
     --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
-  
+
+
   /* RESET BÁSICO */
   * {
     box-sizing: border-box;
@@ -161,7 +162,7 @@
 #music-countdown{
   position: relative;
   padding: 60px 20px;
-  background-image: url('./images/music.png'); /* 👈 solo esta sección */
+  background-image: url('./images/itinerario-2.png'); /* 👈 solo esta sección */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -191,7 +192,7 @@
   }
   button:hover {
     background: var(--text-color);
-   color: var(--text-color);
+   color: white;
   }
   
   /* PROGRESO DE MÚSICA */
@@ -288,7 +289,7 @@
     margin-top: -20px;
   }
   .unit {
-    background: rgba(182, 179, 5, 0.805);
+    background: rgb(229 226 35);
     padding: 0;
     border-radius: 100%;
     width: 100px;
@@ -309,12 +310,13 @@
   #calendar-button {
     text-align: center;
     margin-top: -10px;
+    margin-bottom: 30px;
   }
   #calendar-button button {
     padding: 12px 24px;
     font-size: 0.9rem;
     background-color: var(--accent-color);
-    color: #2FA2A1;
+    color: var(--text-color);
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -356,78 +358,104 @@
     margin: 0;
   }
   /* ===== Itinerario con fondo propio + overlay + glass ===== */
+/* ===== Itinerario con fondo propio + overlay + glass ===== */
 #itinerary-section{
   position: relative;
   padding: 50px 20px;
-  background-image: url('./images/iti.png'); /* 👈 tu imagen de fondo */
+  background-image: url('images/itinerario-2.png'); /* cambia la ruta si hace falta */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: fixed; /* parallax desktop */
   overflow: hidden;
 }
-
 #itinerary-section .it-overlay{
-  content: "";
   position: absolute; inset: 0;
   background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.25));
   pointer-events: none;
 }
-
 #itinerary-section .it-grid{
   position: relative; z-index: 1;
   max-width: 1100px; margin: 0 auto;
   display: grid; gap: 24px;
   grid-template-columns: 1fr 1fr;
 }
-
+/* Cards */
 .it-card{
   backdrop-filter: blur(6px);
-  background: rgba(255,255,255,0.82);
   border: 1px solid rgba(255,255,255,0.45);
   border-radius: 16px;
   box-shadow: 0 10px 24px rgba(0,0,0,0.12);
   padding: 22px 18px;
   text-align: center;
 }
+#itinerary-section h2{ font-size: var(--font-size-title-small); }
+#itinerary-section p{ font-size: var(--font-size-text); }
+.it-card button{ margin-top: 10px; font-family: var(--font-body); }
 
-.it-card h2{
-  font-size: var(--font-size-title-small);
-  margin-top: 8px; margin-bottom: 10px;
-  color: var(--text-color);
+/* Avatar redondo */
+.it-avatar{
+  width: 160px; height: 160px;
+  margin: 0 auto 14px;
+  border-radius: 9999px;
+  padding: 4px; background:#fff;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+  position: relative;
+}
+.it-avatar::after{
+  content:""; position:absolute; inset:-6px;
+  border-radius:9999px; box-shadow:0 0 0 3px rgba(47,162,161,0.25);
+  pointer-events:none;
+}
+.it-avatar img{
+  width: 100%; height: 100%;
+  border-radius: 9999px;
+  object-fit: cover; display:block;
 }
 
-.it-card img{
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 10px;
-  margin: 14px 0 10px 0;
-  box-shadow: var(--shadow);
-}
-
-.it-card p{
-  font-size: var(--font-size-text);
-}
-
-.it-card button{
-  margin-top: 10px;
-  font-family: var(--font-body);
-}
-
-/* iOS / móviles: evita jitter del parallax */
+/* iOS: evita jitter del parallax */
 @media (max-width: 1024px){
   #itinerary-section{ background-attachment: scroll; }
 }
+/* Responsive grid */
 @media (max-width: 820px){
   #itinerary-section .it-grid{ grid-template-columns: 1fr; }
 }
 
   /* ITINERARIO */
-  #itinerary-section {
-    background-color: transparent;
-  }
-  
+/* Fondo a foto completa, sin overlay */
+#itinerary-section{
+  position: relative;
+  padding: 50px 20px;
+  background-image: url('images/itinerario-2.png'); /* ← pon aquí tu foto */
+  background-size: cover;          /* ocupa todo */
+  background-position: center;     /* centrada */
+  background-repeat: no-repeat;
+  background-attachment: scroll;   /* sin parallax */
+  overflow: hidden;
+}
+
+/* Desactiva cualquier overlay previo por si quedó en el DOM o CSS */
+#itinerary-section .it-overlay{ display: none !important; }
+
+/* (Opcional) más contraste en tarjetas si la foto es muy clara */
+/* Fondo a foto completa, sin overlay */
+#itinerary-section{
+  position: relative;
+  padding: 30px 20px;
+  background-image: url('images/itinerario-2.png'); /* ← pon aquí tu foto */
+  background-size: cover;          /* ocupa todo */
+  background-position: center;     /* centrada */
+  background-repeat: no-repeat;
+  background-attachment: scroll;   /* sin parallax */
+  overflow: hidden;
+}
+
+/* Desactiva cualquier overlay previo por si quedó en el DOM o CSS */
+#itinerary-section .it-overlay{ display: none !important; }
+
+/* (Opcional) más contraste en tarjetas si la foto es muy clara */
+
   #itinerary-section h2{
     font-size: var(--font-size-title-small);
   }
@@ -450,6 +478,205 @@
     margin-top: 10px;
     font-family: var(--font-body);
   }
+  /* Fix: asegurar que la imagen quede dentro del círculo */
+.it-avatar { 
+  width: 160px; height: 160px; 
+  margin: 0 auto 14px; 
+  border-radius: 9999px; 
+  padding: 4px; 
+  background: #fff; 
+  box-shadow: 0 10px 24px rgba(0,0,0,0.12); 
+  position: relative;
+  overflow: hidden; /* 🔒 recorta cualquier desborde */
+}
+
+#ceremony .it-avatar img,
+#reception .it-avatar img {
+  width: 100% !important;
+  height: 100% !important;          /* fuerza a cubrir el contenedor */
+  object-fit: cover !important;      /* recorte centrado */
+  border-radius: 9999px !important;
+  display: block;
+  margin: 0 !important;              /* anula el margin-top:50px heredado */
+}
+
+/* Si quieres el círculo un poco más grande en desktop */
+@media (min-width: 768px){
+  .it-avatar{ width: 180px; height: 180px; }
+}
+@media (min-width: 1024px){
+  .it-avatar{ width: 200px; height: 200px; }
+}
+/* ========== Sección Familias (con imagen de fondo) ========== */
+#family-section{
+  position: relative;
+  padding: 56px 20px;
+  background-image: url('images/BENDICIONES.png'); /* ← CAMBIA esta ruta a tu foto */
+  background-size: cover;          /* ocupa toda la sección */
+  background-position: center;     /* centrada */
+  background-repeat: no-repeat;
+  background-attachment: scroll;   /* estable en móviles (sin parallax) */
+  overflow: hidden;
+  margin-top: -4px;
+}
+
+/* Si quieres SIN “tela” u overlay, déjalo así; si luego te falta contraste, cambia el alpha */
+#family-section .family-overlay{
+  position: absolute; inset: 0;
+  pointer-events: none;
+}
+
+#family-section .family-container{
+  position: relative; z-index: 1;
+  max-width: 1100px; margin: 0 auto;
+}
+#family-section .family-heading{
+  font-family: var(--font-title);
+  color: var(--text-color);
+  text-align: center;
+  font-size: var(--font-size-title-small);
+  margin-bottom: 18px;
+  text-shadow: 0 1px 2px rgba(255,255,255,0.35); /* legibilidad sobre foto */
+  margin-top: 45px;
+}
+/* Grid de dos columnas (pasa a una en móvil) */
+#family-section .family-grid{
+  display: grid; gap: 24px;
+  grid-template-columns: 1fr 1fr;
+}
+/* Tarjetas tipo glass */
+#family-section .family-card{
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.50);
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+  padding: 22px 18px;
+}
+
+#family-section h3{
+  font-family: var(--font-title);
+  color: var(--text-color);
+  margin-bottom: 6px;
+  font-size: 1.8rem;
+}
+
+#family-section .family-name{
+  font-weight: 600;
+  margin-bottom: 12px;
+  font-size: 1.8rem;
+  color: var(--text-color);
+  font-family: var(--font-title);
+}
+
+#family-section h4{
+  font-family: var(--font-body);
+  color: var(--text-color);
+  font-size: 1.2rem;
+  margin: 12px 0 6px;
+}
+
+#family-section .family-list{
+  list-style: none;
+  padding-left: 0;
+  margin: 0 0 10px 0;
+}
+
+#family-section .family-list li{
+  margin: 4px 0;
+  line-height: 1.35;
+  color: var(--text-color);
+  font-size: 1.2rem;
+}
+
+#family-section .rip{
+  font-size: 0.9em;
+  opacity: 0.85;
+}
+
+/* Nota especial del novio (puedes reutilizarla donde quieras) */
+.family-note.groom{
+  margin-top: 10px;
+  display: inline-block;   /* tono acorde a tu paleta */
+  color: #a0a032;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 1.2rem;
+  font-style: italic;
+}
+
+/* Responsivo: 1 columna en pantallas pequeñas */
+@media (max-width: 900px){
+  #family-section .family-grid{ grid-template-columns: 1fr; }
+}
+
+/* (Opcional) si luego quieres activar parallax en desktop */
+@media (min-width: 1025px){
+  #family-section{ background-attachment: fixed; } /* ojo: en iOS puede “temblar” */
+}
+/* ===== Separador full-bleed con imagen (banner fluido) ===== */
+.photo-full{
+  width: 100vw;                 /* ocupa todo el ancho de la ventana */
+  margin-left: 50%;
+  transform: translateX(-50%);  /* centra el bloque respecto a la ventana */
+  overflow: hidden;
+  position: relative;
+  margin-top: -5px;
+}
+
+.photo-full img{
+  display: block;
+  width: 100%;
+  height: auto;                 /* respeta proporción de la imagen */
+  object-fit: contain;          /* no recorta; cambia a 'cover' si quieres recorte artístico */
+}
+
+/* Animación opcional (combina con tu fade-in-element/visible) */
+.photo-full.fade-in-element{
+  opacity: 0;
+  transform: translate(-50%, 20px);
+  transition: opacity .8s ease, transform .8s ease;
+}
+.photo-full.fade-in-element.visible{
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+/* ===== Fondo para la sección unificada (regalos + deseos) ===== */
+/* Fondo para la sección unificada (si no lo pusiste antes) */
+#gifts-wishes{
+  background-image: url('images/itinerario-2.png'); /* cambia la ruta */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+}
+
+/* Grid simple para ubicar las dos cards */
+.gw-grid{
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1fr; /* móvil: una columna */
+}
+@media (min-width: 900px){
+  .gw-grid{ grid-template-columns: 1fr 1fr; } /* desktop: dos columnas */
+}
+
+/* === Cards: reuso exacto del estilo que te gusta === */
+.gw-card{
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.50);
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+  padding: 22px 18px;
+  text-align: center; /* coherente con tus secciones */
+}
+
+/* Quita el fondo propio de #wishes-section para que se vea la foto detrás */
+#gifts-wishes #wishes-section{
+  background: transparent !important;
+  background-image: none !important;
+}
   /* LLUVIA DE SOBRES */
   #gift-section {
     background: transparent;
@@ -471,90 +698,18 @@
     text-align: center;
     padding: 10px 20px;
   }
-  .bank-toggle {
-    font-size: var(--font-size-text);
-    padding: 12px 24px;
-    background-color: rgb(248, 244, 237);
-    color: var(--text-color);
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    box-shadow: var(--shadow);
-    width: 100%;
-    max-width: 500px;
-    text-align: center;
-    transition: background 0.3s;
-    font-family: var(--font-body);
-    margin: 10px auto;
-    box-shadow: var(--shadow);
-  }
-  .bank-toggle:hover {
-    background-color: var(--text-color);
-  }
-  .bank-details {
-    overflow: hidden;
-    max-height: 0;
-    opacity: 0;
-    transition: max-height 0.5s ease, opacity 0.5s ease;
-    background-color: rgba(255,255,255,0.9);
-    border-radius: 10px;
-    padding: 0 15px;
-    max-width: 500px;
-    margin: 0 auto;
-  }
-  .bank-details.open {
-    max-height: 300px; /* ajusta según el contenido */
-    opacity: 1;
-    padding: 15px;
-  }
-  .bank-details p {
-    margin: 6px 0;
-    font-size: 1rem;
-    color: var(--text-color);
-    font-size: var(--font-size-text);
-  }
-  /* DRESS CODE */
-  #dresscode-section {
-    background: transparent;
-  }
-  #dresscode-section h2{
-    font-size: var(--font-size-title-small);
-  }
-  #dresscode-section p{
-    font-size: var(--font-size-text);
-  }
-  #dresscode-section img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-  #dresscode-inspo button{
-    margin-top: 10px;
-    font-family: var(--font-body);
-    font-size: var(--font-size-text);
-  }
   /* Modal */
 .hidden {
   display: none !important;
 }
-  /* BUENOS DESEOS */
-  #wishes-section {
-    background-image: url(/images/82.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: top center;
-    position: relative;
-    z-index: 1; /* ✅ Lo traemos al frente */
-    margin-bottom: -37px;
-  }
-  
+  /* BUENOS DESEOS */  
   #wishes-section h2{
     font-size: var(--font-size-title-small);
-    color: #2FA2A1;
+    color: var(--text-color);
   }
   #wishes-section p{
     font-size: var(--font-size-text);
-    color: #2FA2A1;
+    color: var(--text-color);
   }  
   #show-wishes button {
     margin-top: 10px;
@@ -583,7 +738,7 @@
     font-family: var(--font-body, Arial, sans-serif);
     font-size: 1rem;
     background-color: #fff;
-    color: #2FA2A1;
+    color: var(--text-color);
     box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
   }
   
@@ -596,7 +751,7 @@
     padding: 12px 24px;
     font-size: 1.2rem;
     background-color: var(--accent-color);
-    color: #2FA2A1;
+    color: var(--text-color);
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -608,6 +763,172 @@
   #wish-form button:hover {
     background-color: var(--text-color);
   }
+  /* ===== Sección Galería ===== */
+#gallery-section{
+  position: relative;
+  padding: 40px 20px;                 /* respeta tu escala */
+  background-image: url('images/itinerario-2.png'); /* ← TU FOTO DE FONDO */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;      /* estable en móviles */
+  overflow: hidden;
+  margin-top: -10px;
+}
+#gallery-section .gallery-overlay{
+  position: absolute; inset: 0;
+  background: rgba(255,255,255,0.08); /* “velo” sutil tipo el que ya usas */
+  pointer-events: none;
+}
+#gallery-section .gallery-container{
+  position: relative; z-index: 1;
+  max-width: 1100px; margin: 0 auto;
+  /* Card/Glass suave para el bloque entero (puedes quitar si no lo quieres) */
+  backdrop-filter: blur(6px);
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.50);
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+  padding: 22px 18px;
+  text-align: center;
+}
+section { opacity: 0; transform: translateY(30px); }
+section.visible { opacity: 1; transform: none; }
+
+/* Foto principal + flechas */
+.gallery-main{
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+#gallery-main-img{
+  width: 100%;
+  height: 420px;                 /* alto cómodo sin tocar escala global */
+  max-height: 65vh;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  cursor: zoom-in;
+}
+.gallery-nav{
+  background: rgb(248, 244, 237);  /* como tus botones */
+  color: var(--text-color);
+  border: none;
+  padding: 10px 16px;
+  font-size: 1.6rem;
+  line-height: 1;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+}
+.gallery-nav:hover{ background: var(--text-color); color: #fff; }
+
+/* Tira de miniaturas */
+.gallery-thumbs{
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+  list-style: none;
+  padding: 12px 0 0 0;
+  margin: 12px 0 0 0;
+}
+.gallery-thumbs img{
+  width: 100%;
+  height: 92px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  opacity: 0.9;
+  transition: transform .2s ease, opacity .2s ease;
+}
+.gallery-thumbs img:hover{ transform: translateY(-2px); opacity: 1; }
+.gallery-thumbs img.is-active{ outline: 2px solid var(--text-color); }
+
+/* Lightbox */
+#lightbox{
+  position: fixed; inset: 0; z-index: 9999;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(0,0,0,0.65);
+  padding: 20px;
+}
+#lightbox.hidden{ display: none !important; }
+#lightbox img{
+  max-width: 92vw; max-height: 88vh;
+  border-radius: 12px;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.35);
+}
+#lightbox-close{
+  position: absolute; top: 16px; right: 16px;
+  background: rgba(255,255,255,0.95);
+  color: var(--text-color);
+  border: 1px solid rgba(0,0,0,0.05);
+  border-radius: 999px;
+  width: 42px; height: 42px;
+  font-size: 1.4rem; line-height: 1;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+#lightbox-close:hover{ background: var(--text-color); color: #fff; }
+
+/* Responsive */
+@media (max-width: 900px){
+  #gallery-main-img{ height: 320px; }
+  .gallery-thumbs{ grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 600px){
+  #gallery-main-img{ height: 240px; }
+  .gallery-thumbs img{ height: 80px; }
+}
+/* ===== Sección Hashtag + Playlist (con fondo y overlay) ===== */
+#social-section{
+  position: relative;
+  padding: 40px 20px;
+  background-image: url('images/itinerario-2.png'); /* ← cambia por tu foto */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll; /* estable en móviles */
+  overflow: hidden;
+}
+#social-section .social-overlay{
+  position: absolute; inset: 0;
+  background: rgba(255,255,255,0.08); /* velo sutil como el que usas */
+  pointer-events: none;
+}
+#social-section .social-container{
+  position: relative; z-index: 1;
+  max-width: 1100px; margin: 0 auto;
+}
+#social-section .social-grid{
+  display: grid; gap: 24px;
+  grid-template-columns: 1fr;    /* móvil */
+}
+@media (min-width: 900px){
+  #social-section .social-grid{ grid-template-columns: 1fr 1fr; } /* desktop */
+}
+
+/* === Cards: reuso del estilo que te gusta === */
+#social-section .social-card{
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.50);
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+  text-align: center;
+  background: transparent; /* opcional: glass suave para legibilidad */
+  padding: 5px;
+}
+
+/* Asegurar lordicon encima de cualquier overlay interno */
+#social-section lord-icon{ position: relative; z-index: 2; display: inline-block; }
+
+/* Imagen QR responsive sin romper escala */
+#social-section .section-filter img{
+  max-width: 250px; width: 100%; height: auto; display: block; margin: 0 auto 10px;
+}
   /* CONFIRMACIÓN */
   #rsvp-section {
     background: transparent;
@@ -642,11 +963,12 @@
   #final-message-section p{
     font-size: var(--font-size-subtitle);
    color: var(--text-color);
+   font-family: 'Great Vibes', cursive;
   }
   /* FOOTER */
   footer {
-    background: #186b76;
-   color: var(--text-color);
+    background: var(--text-color);
+   color: white;
     padding: 20px;
     text-align: center;
   }
@@ -657,13 +979,13 @@
   }
   
   #social-icons a {
-   color: var(--text-color);
+   color: white;
     margin: 0 10px;
     font-size: 1.5rem;
   }
 
   #footer {
-   color: var(--text-color);
+   color: white;
     text-align: center;
     padding: 20px 0;
   }
@@ -675,13 +997,13 @@
   }
   
   #social-icons a {
-   color: var(--text-color);
+   color: white;
     font-size: 2.5rem;
     transition: color 0.3s;
   }
   
   #social-icons a:hover {
-   color: var(--text-color);
+   color:white;
   }
   
   .footer-logo img {
@@ -700,98 +1022,70 @@
     opacity: 1;
     transform: translateY(0);
   }
-  /* SECCIÓN HOTEL */
-  #hotel-section {
-    background-image: url('/images/playa.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    text-align: center;
-    margin-top: 0 ;
-  }
-  #hotel-section h2 {
-    font-size: var(--font-size-title-small);
-    margin-bottom: 20px;
-    margin-top: 40px;
-  }
-  .hotel-info-box {
-    background-color:rgb(165 165 165 / 57%); /* Fondo uniforme */
-    padding: 20px;
-    border-radius: 12px;
-    max-width: 100%;
-    margin: 20px auto;
-    text-align: center;
-  }
-  
-  .hotel-info-box .hotel-intro {
-    font-size: 1.4rem;
-    font-weight: bold;
-   color: var(--text-color);
-    margin-bottom: 8px;
-  }
-  
-  .hotel-info-box .hotel-description {
-    font-size: 1rem;
-   color: var(--text-color);
-    margin: 0;
-  }
-  
-  .hotel-toggle {
-    background-color: var(--accent-color);
-    color: #2FA2A1;
-    padding: 12px 24px;
-    font-size: 1rem;
-    font-family: var(--font-body);
-    border: none;
-    border-radius: 6px;
-    margin: 10px auto;
-    width: 100%;
-    max-width: 500px;
-    cursor: pointer; /* ← esto es clave */
-    box-shadow: var(--shadow);
-    display: block;
-  }
-  .hotel-content {
-    max-width: 600px;
-    margin: 10px auto 30px auto;
-    padding: 15px 20px;
-    background-color: rgba(255, 255, 255, 0.85);
-    border-radius: 10px;
-    box-shadow: var(--shadow);
-    align-items: center;
-  }
-  
-  .hotel-content p {
-    font-size: var(--font-size-text);
-    line-height: 1.5;
-    color: #2FA2A1;
-  }
-  
-  .hotel-content a {
-    color: #2FA2A1;
-    text-decoration: none;
-  }
-  .hidden {
-    display: none !important;
-  }
-  
-  .hotel-toggle {
-    cursor: pointer;
-  }
-  
+  /* ===== Fondos por sección ===== */
+
+/* Mensaje final */
+#final-message-section{
+  /* quita el color sólido anterior */
+  background-color: transparent !important;
+
+  /* tu imagen de fondo */
+  background-image: url('images/iti.png'); /* ← cambia la ruta */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll; /* estable en móviles */
+}
+/* Card estilo “glass” (reuso del look que te gusta) */
+#final-message-section .final-message-card{
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.50);
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+  background: transparent;
+  padding: 5px;              /* como pediste */
+  max-width: 900px;          /* centrado y con respiro */
+  margin: 0 auto;
+  text-align: center;
+}
+/* Confirmación (RSVP) */
+#rsvp-section{
+  background-image: url('images/itinerario-2.png');          /* ← cambia la ruta */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+}
+/* Card “glass” SOLO para RSVP */
+#rsvp-section .rsvp-card{
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.50);
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+  background: transparent;
+  padding: 5px;           /* como pediste */
+  max-width: 900px;
+  margin: 0 auto;         /* centrado */
+  text-align: center;
+}
+
   /* RESPONSIVE */
   @media (max-width: 768px) {
-    h1 {
-      font-size: 2.7rem;
+    .hero-text h2 {
+      font-size: 1.8rem;
+      margin-top: -35px;
+      color: var(--text-color);
     }
-    
-    h2 {
-      font-size: 2rem;
+    .mc-card h2{
+      font-size: var(--font-size-subtitle);
+    }
+    h1, h2, h3 {
+      font-size: var(--font-size-title-small);
+      padding: 10px;
     }
     
     p {
-      font-size: 1rem;
+      font-size: var(--font-size-text);
     }
     
     #gallery-container img {
@@ -804,4 +1098,78 @@
       height: 75px;
     }
   }
-  
+  /* --- ANTI-BLOCK específico para la zona Música + Countdown --- */
+#music-countdown, #music-section { position: relative; z-index: 1; }
+
+/* Cualquier overlay/velo/pseudo dentro de la zona: NO recibe clics y queda debajo */
+#music-countdown .overlay,
+#music-countdown [class*="overlay"],
+#music-countdown::before,
+#music-countdown::after,
+#music-section .overlay,
+#music-section [class*="overlay"],
+#music-section::before,
+#music-section::after {
+  pointer-events: none !important;
+  position: absolute;
+  inset: 0;
+  z-index: 0 !important;
+  content: none !important; /* por si era un pseudo-elemento */
+}
+
+/* Controles siempre arriba y clicables */
+#playPauseButton,
+#progress-container,
+#calendar-button,
+#calendar-button button {
+  position: relative !important;
+  z-index: 9999 !important;
+  pointer-events: auto !important;
+}
+
+/* Por si un padre creó stacking con transform/filtro */
+#music-countdown * { -webkit-transform: translateZ(0); }
+/* ===== Glass continuo para Música + Countdown ===== */
+
+/* El glass va en TODO el contenedor */
+#music-countdown .mc-container{
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;            /* borde respirando dentro del glass */
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.50);
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+  background: transparent;       /* si quieres más legibilidad, usa rgba(255,255,255,.9) */
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1fr;    /* móvil */
+}
+@media (min-width: 900px){
+  #music-countdown .mc-container{ grid-template-columns: 1fr 1fr; } /* desktop */
+}
+
+/* Las columnas internas sin borde ni sombra (para que NO se “corte” el glass) */
+#music-countdown .mc-card{
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;                    /* el padding ya lo da el contenedor */
+  text-align: center;
+}
+
+/* Espaciado interno suave */
+#music-countdown .mc-music > * + *,
+#music-countdown .mc-countdown > * + *{ margin-top: 12px; }
+
+/* Mantén los controles por encima y clicables (compatibles con tu anti-block) */
+#playPauseButton,
+#progress-container,
+#calendar-button,
+#calendar-button button{
+  position: relative;
+  z-index: 2;
+  pointer-events: auto;
+}

@@ -5,19 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Carlos & Andrea</title>
   <link rel="stylesheet" href="style.css">
-  <meta property="og:title" content="Nos casamos - Brenda & Francisco" />
   <meta property="og:type" content="website" />
+  <script src="https://cdn.lordicon.com/lordicon.js"></script>
   <!-- Firebase primero -->
   <script type="module" src="config.js" defer></script>
   <script type="module" src="loads.js" defer></script>
   <script type="module" src="database.js" defer></script> <!-- ✅ PRIMERO database -->
   <script type="module" src="script.js" defer></script>   <!-- ✅ LUEGO script -->
-  
   <link href="https://fonts.googleapis.com/css2?family=Carattere&amp;family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&amp;family=Great+Vibes&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
-
     <!-- SOBRE -->
     <section id="envelope">
         <div id="envelope-top"></div>
@@ -89,6 +87,52 @@
   </div>
 </section>
 
+<!-- Sección Familias -->
+<section id="family-section">
+  <div class="family-overlay"></div>
+
+  <div class="family-container">
+    <h2 class="family-heading">Con la bendición y el amor de Dios, nuestros padres</h2>
+
+    <div class="family-grid">
+      <!-- NOVIO -->
+      <div class="family-card">
+        <h3>Datos del novio</h3>
+        <p class="family-name">Carlos Eduardo Ixcol Chij</p>
+
+        <h4>Padres del novio</h4>
+        <ul class="family-list">
+          <li>Santiago Ixcol Marroquín</li>
+          <li>+ Juana Karina Chij García <span class="rip">Q.E.P.D.</span></li>
+        </ul>
+
+        <h4>Abuelos</h4>
+        <ul class="family-list">
+          <li>+ Gervacio Chij Pérez <span class="rip">Q.E.P.D.</span></li>
+          <li>Sonia Gladys García Sirin</li>
+        </ul>
+
+        <!-- Nota especial del novio -->
+        <p class="family-note groom">
+          Agradece la vida y enseñanza de sus abuelos, pilares de su camino.
+        </p>
+      </div>
+
+      <!-- NOVIA -->
+      <div class="family-card">
+        <h3>Datos de la novia</h3>
+        <p class="family-name">Andrea Matilde Monroy Ramos</p>
+
+        <h4>Padres</h4>
+        <ul class="family-list">
+          <li>César Augusto Monroy Ordoñez</li>
+          <li>Emiliana Ramos Rumínez</li>
+        </ul>
+        <!-- Si no quieres nota en la novia, deja este espacio vacío -->
+      </div>
+    </div>
+  </div>
+</section>
 
     <!-- Nombre del invitado -->
     <section id="guest-name-section">
@@ -100,61 +144,74 @@
       <p><span id="passes"></span></p>
     </section>
 
-    <!-- Itinerario Ceremonia y Recepción -->
-    <section id="itinerary-section">
-      <div id="ceremony">
-        <lord-icon
-        src="https://cdn.lordicon.com/unkasvor.json"
-        trigger="loop"
-        delay="2000"
-        stroke="light"
-        colors="primary:#2FA2A1,secondary:#ffffff"
-        style="width:72px;height:72px"
-        aria-hidden="true">
-      </lord-icon>
-        <h2>Ceremonia</h2>
-        <p id="ceremony-place"></p>
-        <p id="ceremony-address"></p>
-        <p><span id="ceremony-date"></span> | <span id="ceremony-time"></span></p>
-        <button id="ceremony-map">Cómo llegar</button>
-      </div>
-      <div id="reception">
-        <img id="reception-image" alt="reception">
-        <h2>Recepción</h2>
-        <p id="reception-place"></p>
-        <p id="reception-address"></p>
-        <p><span id="reception-date"></span> | <span id="reception-time"></span></p>
-        <button id="reception-map">Cómo llegar</button>
-      </div>
-    </section>
+<!-- Itinerario Ceremonia y Recepción -->
+  <section id="itinerary-section">
+  <div class="it-overlay"></div>
 
+  <div class="it-grid">
+    <!-- CEREMONIA -->
+    <div id="ceremony" class="it-card">
+      <figure class="it-avatar">
+        <img id="ceremony-image" alt="Ceremonia" loading="lazy" />
+      </figure>
+
+      <h2>Ceremonia</h2>
+      <p id="ceremony-place"></p>
+      <p id="ceremony-address"></p>
+      <p><span id="ceremony-date"></span> | <span id="ceremony-time"></span></p>
+      <button id="ceremony-map">Cómo llegar</button>
+    </div>
+
+    <!-- RECEPCIÓN -->
+    <div id="reception" class="it-card">
+      <figure class="it-avatar">
+        <img id="reception-image" alt="Recepción" loading="lazy" />
+      </figure>
+
+      <h2>Recepción</h2>
+      <p id="reception-place"></p>
+      <p id="reception-address"></p>
+      <p><span id="reception-date"></span> | <span id="reception-time"></span></p>
+      <button id="reception-map">Cómo llegar</button>
+    </div>
+  </div>
+  </section>
+
+  <!-- Sección anterior -->
+   <div class="photo-full fade-in-element visible" style="transition-delay: 1.1s;">
+      <img src="/images/S1.png" alt="Foto de la pareja" loading="lazy">
+   </div>
+
+   <!-- REGALOS + BUENOS DESEOS (sección unificada con fondo) -->
+<section id="gifts-wishes">
+  <div class="gw-grid">
     <!-- Lluvia de sobres -->
-    <section id="gift-section">
-        <img id="gift-image" alt="gift">
-      <h2>¡Tu presencia, nuestro mejor regalo!</h2>
+    <section id="gift-section" class="gw-card">
+      <lord-icon 
+        class="icon-gift" 
+        src="https://cdn.lordicon.com/mybqhzci.json" 
+        trigger="loop" 
+        stroke="light" 
+        colors="primary:#FFD700 ,secondary:#FF1493" 
+        style="width:200px;height:200px">
+      </lord-icon>
+      <h2>¡Regalo!</h2>
       <p id="abroad-gift-message"></p>
-      <div id="bank-details"></div>
-      <p id="abroad-gift-message"></p>
-      <p>¡Muchas Gracias!</p>
-    </section>
-
-    <!-- Dress code -->
-    <section id="dresscode-section">
-        <img id="dresscode-image" alt="dresscode">
-         <h2>Dress Code</h2>
-
-      <div id="dresscode-details">
-          <p>Para ayudarte a elegir tu atuendo, hemos preparado algunas ideas que pueden inspirarte. El blanco y el ivory están reservados para la novia.</p>
-      </div>
-
-        <div id="dresscode-inspo" class="inspo-buttons">
-          <button onclick="window.open('https://es.pinterest.com/search/pins/?q=Vestidos%20invitadas%20de%20mujeres%20paleta%20colores%20pastel&rs=typed', '_blank')">Inspiración para Mujeres</button>
-          <button onclick="window.open('https://es.pinterest.com/search/pins/?q=Trajes%20beige%20para%20playa%20para%20hombres%20invitados&rs=typed', '_blank')">Inspiración para Hombres</button>
-        </div>
+      <!-- Evitar ID duplicado -->
+      <p class="abroad-gift-message-2"></p>
+      <p>¡Tu presencia, nuestro mejor regalo!</p>
     </section>
 
     <!-- Buenos deseos -->
-    <section id="wishes-section">
+    <section id="wishes-section" class="gw-card">
+      <lord-icon 
+      class="icon-gift" 
+      src="https://cdn.lordicon.com/vgyuhnxn.json"
+      trigger="loop" 
+      stroke="light" 
+      colors="primary:#FFD700 ,secondary:#FF1493" 
+      style="width:200px;height:200px">
+    </lord-icon>
       <h2>Buenos Deseos</h2>
       <button id="show-wishes">Ver Buenos Deseos</button>
       <div id="wishes-container"></div>
@@ -165,40 +222,114 @@
         <button id="submit-wish">Enviar</button>
       </div>
     </section>
+  </div>
+</section>
 
-    <section id="hotel-section">
-      <h2>Hospedaje</h2>
-      <div class="hotel-info-box">
-        <p class="hotel-intro">Hotel Emporio Cancún</p>
-        <p class="hotel-description">Si deseas hospedarte en el lugar del evento, aquí puedes hacer tu reserva:</p>
-      </div>
+<!-- GALERÍA -->
+<section id="gallery-section">
+  <div class="gallery-overlay"></div>
+
+  <div class="gallery-container">
+    <h2>Galería</h2>
+
+    <!-- Foto principal con flechas -->
+    <div class="gallery-main">
+      <button id="gallery-prev" class="gallery-nav" aria-label="Anterior">‹</button>
+      <img id="gallery-main-img" src="images/33.png" alt="Foto 1 de la galería" loading="lazy">
+      <button id="gallery-next" class="gallery-nav" aria-label="Siguiente">›</button>
+    </div>
+
+    <!-- Tira de 6 fotos -->
+    <ul class="gallery-thumbs" id="gallery-thumbs">
+      <li><img src="images/33.png" alt="Miniatura 1" data-index="0" loading="lazy"></li>
+      <li><img src="images/34.png" alt="Miniatura 2" data-index="1" loading="lazy"></li>
+      <li><img src="images/35.png" alt="Miniatura 3" data-index="2" loading="lazy"></li>
+      <li><img src="images/36.png" alt="Miniatura 4" data-index="3" loading="lazy"></li>
+      <li><img src="images/37.png" alt="Miniatura 5" data-index="4" loading="lazy"></li>
+      <li><img src="images/38.png" alt="Miniatura 6" data-index="5" loading="lazy"></li>
+    </ul>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div id="lightbox" class="hidden" aria-modal="true" role="dialog">
+  <button id="lightbox-close" aria-label="Cerrar">×</button>
+  <img id="lightbox-img" alt="Foto ampliada">
+</div>
+
+  <!-- Sección Hashtag + Playlist -->
+<section id="social-section">
+  <div class="social-overlay"></div>
+
+  <div class="social-container">
+    <div class="social-grid">
       
-    
-      <button class="hotel-toggle" data-target="option1">Página Web</button>
-      <div id="option1" class="hotel-content hidden">
-        <p><a href="https://reservas.hotelesemporio.com/" target="_blank">Haz clic aquí para reservar</a></p>
+      <!-- Hashtag / Fotos -->
+      <div class="social-card section-filter">
+        <lord-icon
+          src="https://cdn.lordicon.com/wsaaegar.json"
+          trigger="loop"
+          delay="2000"
+          stroke="light"
+          colors="primary:#FFD700 ,secondary:#FF1493" 
+          style="width:200px;height:200px">
+        </lord-icon>
+
+        <h2>#labodadecarlosyandrea</h2>
+        <p>Sube las fotos a Instagram utilizando mi hashtag, y poder convertir estas memorias en eternas.</p>
+        <h3>Hagamos los recuerdos inolvidables</h3>
+
+        <!-- Usa ruta relativa si sirves desde carpeta: images/QR.png -->
+        <img src="images/QR-CARLOSYANDREA.png" alt="Código QR" width="250" loading="lazy">
+
+        <p>Escanea el código QR o usa el botón para subir tus fotos</p>
+        <button onclick="window.open('https://drive.google.com/drive/folders/1NX49qerCI_MiaJPXTTH_J1eWPD6Bnc2p?usp=drive_link ','_blank')">
+          Subir fotos
+        </button>
       </div>
-      
-      <div class="hotel-accordion">
-        <button class="hotel-toggle" data-target="option2">Whatsapp</button>
-        <div id="option2" class="hotel-content hidden">
-          <p><a href="https://api.whatsapp.com/send/?phone=529983313688&text=Hola+quiero+hacer+una+reserva&type=phone_number&app_absent=0">Manda un mensaje</a></p>
-        </div>
-    
-        <button class="hotel-toggle" data-target="option3">Booking</button>
-        <div id="option3" class="hotel-content hidden">
-          <p><a href="https://www.booking.com/hotel/mx/emporio-cancun.es.html?aid=311839&label=the-royal-mayan-V5lBNDiH3Zw4WsYiXPpQHQS388389139671%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-36423295301%3Alp9069801%3Ali%3Adec%3Adm%3Appccp%3DUmFuZG9tSVYkc2RlIyh9Ybz4KBg0DTFCp_luKAHRTJg&sid=a2f2d223c3a3f1c9f3ef6a6360856848&all_sr_blocks=33699921_364649010_2_42_0_40150%2C33699921_364649010_2_42_0_40150&dest_id=-1655011&dest_type=city&dist=0&group_adults=4&group_children=0&hapos=1&highlighted_blocks=33699921_364649010_2_42_0_40150%2C33699921_364649010_2_42_0_40150&hpos=1&matching_block_id=33699921_364649010_2_42_0_40150&no_rooms=2&req_adults=4&req_children=0&room1=A%2CA&room2=A%2CA&sb_price_type=total&sr_order=popularity&sr_pri_blocks=33699921_364649010_2_42_0_40150_1488469%2C33699921_364649010_2_42_0_40150_1488469&srepoch=1754497737&srpvid=73523298eab0d62b09bc2d20f1b11425&type=total&ucfs=1&" target="_blank">Reserva tu estadia</a></p>
-        </div>
+
+      <!-- Playlist -->
+      <div class="social-card section-playlist">
+        <h2>Playlist</h2>
+
+        <lord-icon
+          src="https://cdn.lordicon.com/vvlnxtgv.json"
+          trigger="loop"
+          delay="2000"
+          stroke="light"
+          colors="primary:#FFD700 ,secondary:#FF1493" 
+          style="width:200px;height:200px">
+        </lord-icon>
+
+        <p>Nos encantaría que nos sugieras esas canciones que sabes que son geniales y no pueden faltar.</p>
+        <button onclick="window.open('https://open.spotify.com/playlist/6snaBG9a9C6D1FCAhqOM8n?si=992a3ebfe980411c&pt=0203a1c63293eb50439ba710933254f4','_blank')">
+          Abrir playlist en Spotify
+        </button>
       </div>
-    </section>
-  
-    <!-- Confirmación -->
-    <section id="rsvp-section">
-       <img id="rsvp-image" alt="rsvp">
-      <h2>Confirmación</h2>
-      <p id="rsvp-message"></p>
-      <button id="form-confirm">Confirmar</button>
-    </section>
+
+    </div>
+  </div>
+</section>
+
+<section id="rsvp-section" class="visible">
+  <div class="rsvp-card">
+    <h2>Confirmación</h2>
+
+    <lord-icon
+      src="https://cdn.lordicon.com/unkasvor.json"
+      trigger="loop"
+      delay="2000"
+      stroke="light"
+      colors="primary:#FFD700,secondary:#FF1493"
+      style="width:200px;height:200px">
+    </lord-icon>
+
+    <p>Para nosotros es muy importante que confirmes tu asistencia antes del 20 de Noviembre, o bien indicarnos si no podrás acompañarnos..</p>
+    <p id="rsvp-message"></p>
+    <button id="form-confirm">Confirmar</button>
+  </div>
+</section>
+
 
     <!-- Foto final -->
     <section id="final-photo-section">
@@ -206,10 +337,11 @@
     </section>
 
     <!-- Frase final -->
-    <section id="final-message-section">
-      <p id="final-message"></p>
+    <section id="final-message-section" class="visible">
+      <div class="final-message-card">
+        <p id="final-message"></p>
+      </div>
     </section>
-
     <!-- Footer -->
     <footer id="footer">
      <!--<div id="social-icons"></div>-->

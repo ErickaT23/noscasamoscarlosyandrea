@@ -62,72 +62,33 @@ document.addEventListener('DOMContentLoaded', () => {
     return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
   }
 
-//--- Botón para añadir al calendario ---
+// --- Botón para añadir al calendario ---
 window.addToCalendar = function () {
-  const calendarURL = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Nos+casamos+Brenda+%26+Francisco&dates=20260226T223000Z/&details=¡Acompáñanos+a+celebrar+el+amor+en+Cancún!&location=Hotel+Emporio+Cancún&sf=true&output=xml";
+  const calendarURL = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=La%20boda%20de%20Carlos%20%26%20Andrea&dates=20251213/20251214&details=%C2%A1Acomp%C3%A1%C3%B1anos%20a%20celebrar%21&location=Patulul%2C%20Suchitepequez%2C%20Guatemala&sf=true&output=xml";
   window.open(calendarURL, "_blank");
-}
+};
 
 
-  // --- Itinerario ---
-  // --- Ceremonia ---
-  document.getElementById('ceremony-image').src = eventData.ceremony.ceremonyImage;
-  document.getElementById('ceremony-place').innerText = eventData.ceremony.place;
-  document.getElementById('ceremony-address').innerText = eventData.ceremony.address;
-  document.getElementById('ceremony-date').innerText = eventData.ceremony.date;
-  document.getElementById('ceremony-time').innerText = eventData.ceremony.time;
-  document.getElementById('ceremony-map').onclick = () => window.open(eventData.ceremony.mapLink, '_blank');
 
-    // --- Recepción ---
-  document.getElementById('reception-image').src = eventData.reception.receptionImage;
-  document.getElementById('reception-place').innerText = eventData.reception.place;
-  document.getElementById('reception-address').innerText = eventData.reception.address;
-  document.getElementById('reception-date').innerText = eventData.reception.date;
-  document.getElementById('reception-time').innerText = eventData.reception.time;
-  document.getElementById('reception-map').onclick = () => window.open(eventData.reception.mapLink, '_blank');
+// --- Itinerario ---
+// --- Ceremonia ---
+document.getElementById('ceremony-image').src = eventData.ceremony.image; // antes: ceremonyImage
+document.getElementById('ceremony-place').innerText = eventData.ceremony.place;
+document.getElementById('ceremony-address').innerText = eventData.ceremony.address;
+document.getElementById('ceremony-date').innerText = eventData.ceremony.date;
+document.getElementById('ceremony-time').innerText = eventData.ceremony.time;
+document.getElementById('ceremony-map').onclick = () => window.open(eventData.ceremony.mapLink, '_blank');
+
+// --- Recepción ---
+document.getElementById('reception-image').src = eventData.reception.image; // antes: receptionImage
+document.getElementById('reception-place').innerText = eventData.reception.place;
+document.getElementById('reception-address').innerText = eventData.reception.address;
+document.getElementById('reception-date').innerText = eventData.reception.date;
+document.getElementById('reception-time').innerText = eventData.reception.time;
+document.getElementById('reception-map').onclick = () => window.open(eventData.reception.mapLink, '_blank');
 
   // --- Lluvia de sobres ---
-  const bankDetails = document.getElementById('bank-details');
-
-  eventData.banks.forEach((bank, index) => {
-    const button = document.createElement('button');
-    button.textContent = bank.bank;
-    button.className = 'bank-toggle';
-    button.setAttribute('data-index', index);
-  
-    const details = document.createElement('div');
-    details.className = 'bank-details collapse';
-    details.innerHTML = `
-      <p><strong>Banco Agromercantil</strong></p>
-      <p><strong>Número de cuenta:</strong> ${bank.accountNumber}</p>
-      <p><strong>Tipo de cuenta:</strong> ${bank.accountType}</p>
-    `;
-  
-    button.addEventListener('click', () => {
-      details.classList.toggle('open');
-    });
-  
-    bankDetails.appendChild(button);
-    bankDetails.appendChild(details);
-  });
-  
   document.getElementById('abroad-gift-message').innerText = eventData.abroadGiftMessage;
-  document.getElementById('gift-image').src = eventData.giftImage; // ← si lo controlas desde config.js
-  
-  // --- Dress Code ---
-  // DRESS CODE dinámico
-const dresscode = eventData.dresscode;
-
-document.getElementById('dresscode-image').src = dresscode.image;
-
-document.getElementById('dresscode-details').innerHTML = `
-  <p>${dresscode.description}</p>
-`;
-
-document.getElementById('dresscode-inspo').innerHTML = `
-  <button onclick="window.open('${dresscode.inspiration.women}', '_blank')">Inspiración para Mujeres</button>
-  <button onclick="window.open('${dresscode.inspiration.men}', '_blank')">Inspiración para Hombres</button>
-`;
 
 //BUENOS DESEOS
 // script.js (normal, sin import)
@@ -174,18 +135,35 @@ document.getElementById('show-wishes').addEventListener('click', () => {
   document.getElementById('final-photo').src = eventData.finalPhoto;
   document.getElementById('final-message').innerText = eventData.finalMessage;
 
-  // --- Confirmaciones ---
-  // --- Confirmaciones --- (espera a que loads.js defina `eventData.rsvp`)
 // --- Confirmaciones --- (espera a que loads.js defina eventData.rsvp)
 const checkRSVP = setInterval(() => {
-  if (window.eventData?.rsvp?.form && window.eventData?.rsvp?.rsvpImage) {
-    clearInterval(checkRSVP); // ya está definido, dejamos de verificar
+  if (window.eventData?.rsvp?.rsvpImage) {
+    clearInterval(checkRSVP);
 
-    document.getElementById('rsvp-image').src = eventData.rsvp.rsvpImage;
-    document.getElementById('rsvp-message').innerText = "Estamos organizando todo con mucho cariño y tu presencia es parte importante. ¿Nos confirmás si podrás acompañarnos?";
-    document.getElementById('form-confirm').onclick = () => window.open(eventData.rsvp.form, '_blank');
+    // Imagen y mensaje
+    const rsvpImg = document.getElementById('rsvp-image');
+    if (rsvpImg) rsvpImg.src = eventData.rsvp.rsvpImage;
+    const rsvpMsg = document.getElementById('rsvp-message');
+    if (rsvpMsg) rsvpMsg.innerText = "Estamos organizando todo con mucho cariño:";
+
+    // WhatsApp
+    const phoneIntl = "50259394167"; // ← número destino con prefijo país
+    const guestName =
+      document.getElementById('guest-name')?.textContent
+        ?.replace(/\s+/g, ' ')
+        ?.trim() || ""; // intenta tomar nombre mostrado
+
+    const defaultMsg = `Hola! Soy ${guestName || "invitado/a"}. Quiero confirmar mi asistencia a la boda de ${eventData.couple?.names || "la pareja"}.`;
+    const waUrl = `https://wa.me/${phoneIntl}?text=${encodeURIComponent(defaultMsg)}`;
+
+    const btn = document.getElementById('form-confirm');
+    if (btn) {
+      btn.textContent = "Confirmar por WhatsApp";
+      btn.onclick = () => window.open(waUrl, "_blank");
+    }
   }
-}, 100); // revisa cada 100ms hasta que esté listo
+}, 100);
+
 
 
   
@@ -205,6 +183,78 @@ const checkRSVP = setInterval(() => {
 `;*/
 
 document.getElementById('footer-logo').src = eventData.footer.logo;
+
+// ===== GALERÍA =====
+try {
+  const mainImg = document.getElementById('gallery-main-img');
+  const thumbsWrap = document.getElementById('gallery-thumbs');
+  const prevBtn = document.getElementById('gallery-prev');
+  const nextBtn = document.getElementById('gallery-next');
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+  const lbClose = document.getElementById('lightbox-close');
+
+  if (mainImg && thumbsWrap && prevBtn && nextBtn && lightbox && lbImg && lbClose) {
+    const thumbs = Array.from(thumbsWrap.querySelectorAll('img'));
+    let idx = 0;
+
+    const setActive = (i) => {
+      idx = (i + thumbs.length) % thumbs.length;
+      const src = thumbs[idx].getAttribute('src');
+      const alt = thumbs[idx].getAttribute('alt') || `Foto ${idx+1}`;
+      mainImg.src = src;
+      mainImg.alt = alt;
+      thumbs.forEach(t => t.classList.remove('is-active'));
+      thumbs[idx].classList.add('is-active');
+    };
+
+    // init
+    setActive(0);
+
+    // Navegación
+    prevBtn.addEventListener('click', () => setActive(idx - 1));
+    nextBtn.addEventListener('click', () => setActive(idx + 1));
+
+    // Click en miniaturas
+    thumbs.forEach(t => {
+      t.addEventListener('click', () => {
+        const i = parseInt(t.dataset.index || '0', 10);
+        setActive(i);
+        openLightbox();
+      });
+    });
+
+    // Lightbox
+    const openLightbox = () => {
+      lbImg.src = mainImg.src;
+      lbImg.alt = mainImg.alt;
+      lightbox.classList.remove('hidden');
+    };
+    const closeLightbox = () => lightbox.classList.add('hidden');
+
+    mainImg.addEventListener('click', openLightbox);
+    lbClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox(); // cerrar al hacer click fuera
+    });
+    window.addEventListener('keydown', (e) => {
+      if (lightbox.classList.contains('hidden')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') setActive(idx + 1);
+      if (e.key === 'ArrowLeft') setActive(idx - 1);
+    });
+
+    // Swipe móvil (simple)
+    let startX = 0;
+    mainImg.addEventListener('touchstart', (e) => startX = e.touches[0].clientX, {passive:true});
+    mainImg.addEventListener('touchend', (e) => {
+      const dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 40) (dx < 0 ? setActive(idx + 1) : setActive(idx - 1));
+    }, {passive:true});
+  }
+} catch (err) {
+  console.error('Galería: error inicializando', err);
+}
 
 
   // --- Animaciones Scroll (fade-in) ---
@@ -276,3 +326,12 @@ function addToCalendar() {
   });
 
   
+  
+// Quita overlays sueltos que puedan tapar (por si quedaron en el DOM)
+document.querySelectorAll('.main-content > .overlay').forEach(el => el.remove());
+
+// Debug rápido: ver si llegan los clics
+const dbg = m => console.log('[CLICK]', m);
+document.getElementById('playPauseButton')?.addEventListener('click', ()=>dbg('play/pause'));
+document.getElementById('progress-container')?.addEventListener('click', ()=>dbg('progress'));
+document.querySelector('#calendar-button button')?.addEventListener('click', ()=>dbg('calendar'));
