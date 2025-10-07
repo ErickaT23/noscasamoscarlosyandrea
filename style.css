@@ -154,7 +154,7 @@
    color: var(--text-color);
   }
   .hero-text h2{
-    margin-top: -35px;
+    margin-top: -50px;
    color: var(--text-color);
   }
   /* SECCIÓN MÚSICA */
@@ -162,7 +162,7 @@
 #music-countdown{
   position: relative;
   padding: 60px 20px;
-  background-image: url('./images/itinerario-2.png'); /* 👈 solo esta sección */
+  background-image: url('./images/iti.png'); /* 👈 solo esta sección */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -1028,9 +1028,8 @@ section.visible { opacity: 1; transform: none; }
 #final-message-section{
   /* quita el color sólido anterior */
   background-color: transparent !important;
-
   /* tu imagen de fondo */
-  background-image: url('images/iti.png'); /* ← cambia la ruta */
+  background-image: url('images/final.png'); /* ← cambia la ruta */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -1050,7 +1049,7 @@ section.visible { opacity: 1; transform: none; }
 }
 /* Confirmación (RSVP) */
 #rsvp-section{
-  background-image: url('images/itinerario-2.png');          /* ← cambia la ruta */
+  background-image: url('images/BENDICIONES.png');          /* ← cambia la ruta */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -1073,7 +1072,7 @@ section.visible { opacity: 1; transform: none; }
   @media (max-width: 768px) {
     .hero-text h2 {
       font-size: 1.8rem;
-      margin-top: -35px;
+      margin-top: -50px;
       color: var(--text-color);
     }
     .mc-card h2{

@@ -13,13 +13,13 @@ export const eventData = {
       place: "Santa María Magdalena",
       address: "Patulul, Suchitepéquez",
       date: "13 de Diciembre",
-      time: "18:30 hrs",
+      time: "18:00 hrs",
       mapLink: "https://maps.app.goo.gl/VVxCkyjyDCeLCg4z7"
     },
     reception: {
       image: "/images/recepcion.png",
-      place: "Salón Municiapl de Patulul",
-      address: "Patulul, Suchitepéquez",
+      place: "Salón Municipal de Patulul",
+      address: "Suchitepéquez",
       date: "13 de Diciembre",
       time: "19:30 hrs",
       mapLink: "https://maps.app.goo.gl/4n7564x5MMRzhbXJ6?g_st=aw"
@@ -29,6 +29,7 @@ export const eventData = {
     finalPhoto: "/images/S1.png",
     finalMessage: "Esperamos con ilusión poder celebrar juntos este momento tan especial",
     rsvp: {
+
       form: "https://docs.google.com/forms/d/e/1FAIpQLSdAcHTQU0WBzqMlkJ4tIUVqY60DOG9GiDr0mCbFcBDhxmjITw/viewform?usp=header",
     },
     footer: {
