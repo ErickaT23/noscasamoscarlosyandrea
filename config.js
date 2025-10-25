@@ -26,7 +26,7 @@ export const eventData = {
     },
     abroadGiftMessage: "Gracias por ser parte de este momento si deseas agradarnos con un obsequio puede ser una aportación monetaría, o algo que nos ayude a construir nuestro hogar.",
 
-    finalPhoto: "/images/S1.png",
+    finalPhoto: "/images/fotofinal.png",
     finalMessage: "Esperamos con ilusión poder celebrar juntos este momento tan especial",
     rsvp: {
 
