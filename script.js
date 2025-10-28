@@ -167,7 +167,7 @@ const checkRSVP = setInterval(() => {
     // Mensaje EXACTO solicitado (con número de pases)
     const defaultMsg =
       `Hola, soy ${guestName} y quiero confirmar mi asistencia con ${passesNum} ${paseWord} ` +
-      `reservados especialmente para mí. Los veo en su boda, muchas gracias por la invitación.`;
+      `reservados. Los veo en su boda, muchas gracias por la invitación.`;
 
     const waUrl = `https://wa.me/${phoneIntl}?text=${encodeURIComponent(defaultMsg)}`;
 
