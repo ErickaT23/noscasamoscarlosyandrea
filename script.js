@@ -148,12 +148,27 @@ const checkRSVP = setInterval(() => {
 
     // WhatsApp
     const phoneIntl = "50259394167"; // ← número destino con prefijo país
-    const guestName =
-      document.getElementById('guest-name')?.textContent
-        ?.replace(/\s+/g, ' ')
-        ?.trim() || ""; // intenta tomar nombre mostrado
 
-    const defaultMsg = `Hola! Soy ${guestName || "invitado/a"}. Quiero confirmar mi asistencia a la boda de ${eventData.couple?.names || "la pareja"}.`;
+    // Tomar nombre desde el DOM: #guest-name .guest-title
+    const guestName = document.querySelector('#guest-name .guest-title')
+      ?.textContent
+      ?.replace(/[¡!]/g, '') // quitar signos de exclamación
+      ?.trim() || "invitado/a";
+
+    // Tomar número de pases desde el DOM: #passes (ej. "2 lugares reservados con cariño.")
+    const passesText = document.getElementById('passes')?.textContent || "";
+    const passesNumMatch = passesText.match(/\d+/);
+    const passesNum = passesNumMatch ? parseInt(passesNumMatch[0], 10) :
+      (typeof eventData?.guest?.passes === "number" ? eventData.guest.passes : 0);
+
+    // Manejo de singular/plural
+    const paseWord = passesNum === 1 ? "pase" : "pases";
+
+    // Mensaje EXACTO solicitado (con número de pases)
+    const defaultMsg =
+      `Hola, soy ${guestName} y quiero confirmar mi asistencia con ${passesNum} ${paseWord} ` +
+      `reservados especialmente para mí. Los veo en su boda, muchas gracias por la invitación.`;
+
     const waUrl = `https://wa.me/${phoneIntl}?text=${encodeURIComponent(defaultMsg)}`;
 
     const btn = document.getElementById('form-confirm');
@@ -163,6 +178,7 @@ const checkRSVP = setInterval(() => {
     }
   }
 }, 100);
+
 
 
 
