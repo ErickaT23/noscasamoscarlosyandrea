@@ -10,7 +10,7 @@ export const eventData = {
     },
     ceremony: {
       image: "/images/iglesia.png",
-      place: "Santa María Magdalena",
+      place: "Parroquía Santa María Magdalena",
       address: "Patulul, Suchitepéquez",
       date: "13 de Diciembre",
       time: "18:00 hrs",
