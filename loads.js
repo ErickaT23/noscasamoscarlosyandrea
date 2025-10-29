@@ -119,7 +119,7 @@ const guests = [
   { id: "118", name: "Alex padilla", passes: 2 },
   { id: "119", name: "Luis norma", passes: 2 }, 
   { id: "120", name: "Estas Invitado", passes: 1 },
-  { id: "120", name: "Estan Invitados", passes: 2 }
+  { id: "121", name: "Estan Invitados", passes: 2 }
 ];
 
 
